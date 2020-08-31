@@ -4,23 +4,17 @@ import youtube from '../apis/youtube';
 import VideoList from './VideoList';
 import VideoDetail from './VideoDetail';
 
-const KEY = 'AIzaSyCN6e98GjAfa_d4E4mISSn8uCP6g5b1DvE';
-
 class App extends React.Component {
   state = { videos: [], selectedVideo: null };
 
   componentDidMount() {
-    this.onTermSubmit('buildings');
+    this.onTermSubmit('reactjs');
   }
 
   onTermSubmit = async (term) => {
     const response = await youtube.get('/search', {
       params: {
         q: term,
-        part: 'snippet',
-        maxResults: 5,
-        type: 'video',
-        key: KEY,
       },
     });
 
